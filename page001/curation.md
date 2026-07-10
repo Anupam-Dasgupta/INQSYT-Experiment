@@ -133,3 +133,21 @@ Applied all approved changes:
 | https://www.amazon.com/gp/help/customer/display.html?nodeId=GENAFPTNLHV7ZACW | understand_delivery_statuses | Understand what different delivery statuses mean. | Understanding delivery statuses: Your delivery status is in Your Orders: - Arriving: usually followed by a date. Your package is on its way to you - Out for delivery: your package will be delivered today - Delivered: your package has been delivered, and might be in your safe space - Undeliverable: your package couldn't be delivered, and will be returned to Amazon. When we receive it, we'll automatically issue you a refund. Visit the Undeliverable packages help page. |
 | https://www.amazon.com/gp/help/customer/display.html?nodeId=GENAFPTNLHV7ZACW | solve_delivery_problems | Fix a delivery issue such as an unshipped order, delayed order, missing package, or missing items. | Fix a delivery issue: Most issues can be fixed quickly. You can check what to do when: - Order hasn't shipped yet: ... - Order is delayed: ... - Missing package: ... - Missing items: ... |
 | https://www.amazon.com/gp/help/customer/display.html?nodeId=GENAFPTNLHV7ZACW | contact_carrier | Contact the shipping carrier delivering the package. | To contact the company that's delivering your package, refer to Contact a carrier. |
+
+### PAGE_INTENT_CHANGE_PROPOSALS
+
+| url | change_type | change_instruction | change_reason | change_evidence | is_approved |
+|---|---|---|---|---|---|
+| https://www.amazon.com/gp/help/customer/display.html?nodeId=GENAFPTNLHV7ZACW | MERGE | Merge `track_third_party_package` into `track_package`. | The tracking workflow is identical (visiting 'Your Orders'), and consolidating them avoids unnecessary redundancy. | "To check if you ordered from a third-party seller, refer to Your Orders and review the seller name. You can only access tracking information if: - the third-party seller shares this info with us - you chose a trackable shipping option" | No |
+| https://www.amazon.com/gp/help/customer/display.html?nodeId=GENAFPTNLHV7ZACW | DELETE | Delete candidate intent `contact_carrier`. | The page does not natively resolve carrier issues; it only points to an external page link. | "To contact the company that's delivering your package, refer to Contact a carrier." | No |
+| https://www.amazon.com/gp/help/customer/display.html?nodeId=GENAFPTNLHV7ZACW | RENAME | Rename candidate intent `understand_delivery_statuses` to `check_delivery_status_meaning`. | The renamed intent better matches standard verb_object styling and clarifies the specific user action. | "Understanding delivery statuses: Your delivery status is in Your Orders: - Arriving: ... - Out for delivery: ... - Delivered: ... - Undeliverable: ..." | No |
+| https://www.amazon.com/gp/help/customer/display.html?nodeId=GENAFPTNLHV7ZACW | SPLIT | Split candidate intent `solve_delivery_problems` into `understand_unshipped_order` and `understand_delayed_order`. | The page contains native troubleshooting instructions for unshipped and delayed orders, whereas missing items and packages redirect to external resources. | "Fix a delivery issue: Most issues can be fixed quickly. You can check what to do when: - Order hasn't shipped yet: ... - Order is delayed: ... - Missing package: ... - Missing items: ..." | No |
+
+### STEP_1_CHECKS
+
+| check_type | check_name | check_instruction | is_approved |
+|---|---|---|---|
+| check_format | check_output_formats | Verify that PAGE_INTENT_CANDIDATES and PAGE_INTENT_CHANGE_PROPOSALS conform to their expected schemas. | No |
+| check_evidence | check_intent_grounding | Verify that every candidate intent and every proposed change is supported by evidence from the source page. | No |
+| check_reasoning | check_change_proposal_reasons | Verify that every proposed MERGE, SPLIT, RENAME, ADD, or DELETE is reasonable and clearly justified. | No |
+| check_coverage | check_intent_coverage | Verify that no obvious customer goal or refinement proposal directly supported by the page has been omitted. | No |
