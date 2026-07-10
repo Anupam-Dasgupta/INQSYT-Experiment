@@ -17,7 +17,8 @@ Flat
 ## Final Approved Intent List
 - `track_package`
 - `check_delivery_status_meaning`
-- `solve_delivery_problems`
+- `understand_unshipped_order`
+- `understand_delayed_order`
 
 ## Parent-Child Relationships
 N/A
@@ -32,9 +33,11 @@ N/A
 
 ## Intent Naming Rationale
 - `understand_delivery_statuses` was renamed to `check_delivery_status_meaning` to align better with a strictly concise `verb_object` format indicating a clearer action.
+- `solve_delivery_problems` was split into `understand_unshipped_order` and `understand_delayed_order` to reflect the native, actionable content on the page, excluding links to external pages for missing packages/items.
 
 ## Final Taxonomy
 After all approved change proposals have been applied:
 - **`track_package`**: Track a package or get delivery updates for an order, including packages sold by a third-party seller.
-- **`check_delivery_status_meaning`**: Understand the meaning of different delivery statuses like Arriving, Delivered, etc.
-- **`solve_delivery_problems`**: Figure out what to do if an order is delayed, hasn't shipped, or is missing.
+- **`check_delivery_status_meaning`**: Understand the meaning of different delivery statuses like Arriving, Out for delivery, Delivered, and Undeliverable.
+- **`understand_unshipped_order`**: Check what to do when an order has not shipped yet.
+- **`understand_delayed_order`**: Understand the reasons and cancellation options when an order is delayed.
