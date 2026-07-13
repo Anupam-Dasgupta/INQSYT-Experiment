@@ -17,11 +17,20 @@ It does NOT:
 
 ---
 
+# Preconditions
+
+The following must be available:
+
+- source_url
+- specification/intent-taxonomy-context.md
+
+Stop immediately if either cannot be accessed.
+
+---
+
 # Inputs
 
 - Source page URL
-- Step 1 schema
-- Taxonomy specification
 
 ---
 
@@ -29,7 +38,7 @@ It does NOT:
 
 Before execution read:
 
-- specification/step1-schema.md
+- specification/intent-taxonomy-context.md
 
 These specifications define:
 
@@ -47,7 +56,7 @@ They are the authoritative source.
 
 1. Read the source page.
 
-2. Understand the customer goals supported by the page.
+2. Identify every distinct customer goal explicitly supported by the page.
 
 3. Extract every supported customer intent.
 
@@ -59,7 +68,7 @@ They are the authoritative source.
 
 7. Ignore external pages referenced by the page.
 
-8. Produce the PAGE_INTENT_CANDIDATES table exactly as defined by the Step 1 schema.
+8. Produce the PAGE_INTENT_CANDIDATES table exactly as defined by the intent-taxonomy-context.md file.
 
 ---
 
@@ -77,6 +86,17 @@ Before completion verify:
 - naming convention is correct
 - schema exactly matches specification
 - no unsupported intents exist
+
+---
+
+# Success Criteria
+
+The skill succeeds only if:
+
+- PAGE_INTENT_CANDIDATES has been produced
+- every candidate intent is evidence-grounded
+- every supported customer goal has been captured
+- all validation checks pass
 
 ---
 

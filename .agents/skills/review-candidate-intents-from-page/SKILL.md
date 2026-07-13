@@ -5,11 +5,25 @@ description: Generate taxonomy refinement proposals from candidate intents.
 
 # Purpose
 
-Review extracted candidate intents and generate taxonomy refinement proposals.
+Review the extracted candidate intents against the existing taxonomy.
 
-This skill does NOT modify the taxonomy.
+Generate taxonomy refinement proposals where appropriate.
 
-It only proposes changes.
+This skill proposes changes only.
+
+It never modifies the taxonomy or assumes human approval.
+
+---
+
+# Preconditions
+
+The following must be available:
+
+- source_url
+- PAGE_INTENT_CANDIDATES
+- specification/intent-taxonomy-context.md
+
+Stop immediately if any required input cannot be read.
 
 ---
 
@@ -24,7 +38,7 @@ It only proposes changes.
 
 Read:
 
-- specification/step1-schema.md
+- specification/intent-taxonomy-context.md
 
 ---
 
@@ -32,13 +46,15 @@ Read:
 
 Review the extracted intents.
 
-Identify opportunities to:
+Identify only evidence-supported opportunities to:
 
+- ADD
 - MERGE
 - SPLIT
 - RENAME
-- ADD
 - DELETE
+
+Do not generate a proposal unless it provides a clear improvement to the taxonomy.
 
 Every proposal must:
 
@@ -46,36 +62,43 @@ Every proposal must:
 - contain clear reasoning
 - use the required schema
 
+Present PAGE_INTENT_CHANGE_PROPOSALS to the user.
+
+Request explicit approval or rejection for every proposal.
+
+Record every decision in USER_APPROVAL_TABLE.
+
+Do not continue until every proposal has been explicitly marked as APPROVED or REJECTED.
+
+Do not modify the taxonomy.
+Do not assume approval.
+
 Produce:
 
-PAGE_INTENT_CHANGE_PROPOSALS
-
-Produce:
-
-STEP_1_CHECKS
+REVIEW_VALIDATION_CHECKS
 
 ---
 
 # Output
 
 - PAGE_INTENT_CHANGE_PROPOSALS
-- STEP_1_CHECK
+- USER_APPROVAL_TABLE
+- REVIEW_VALIDATION_CHECKS
 
 ---
 
 # Constraints
 
-Never modify the taxonomy.
+Never:
 
-Never assume approval.
-
-Never invent unsupported changes.
+- modify the taxonomy
+- modify curation history
+- assume human approval
+- fabricate justification
+- fabricate supporting evidence
+- omit supported refinement opportunities
 
 ---
-
-# Flow
-
-Present PAGE_INTENT_CHANGE_PROPOSALS to the user for approval.
 
 # Validation
 
@@ -83,4 +106,17 @@ Verify:
 
 - every proposal has justification
 - every proposal has evidence
-- STEP_1_CHECKS is complete
+- every proposal references one or more candidate intents
+- no duplicate proposals exist
+- REVIEW_VALIDATION_CHECKS is complete
+
+---
+
+# Success Criteria
+
+The skill succeeds only if:
+
+- every refinement proposal is evidence-supported
+- every proposal has an explicit human decision
+- USER_APPROVAL_TABLE is complete
+- REVIEW_VALIDATION_CHECKS is complete

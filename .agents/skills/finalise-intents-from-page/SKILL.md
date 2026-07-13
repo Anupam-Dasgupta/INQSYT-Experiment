@@ -5,9 +5,26 @@ description: Apply approved taxonomy changes and generate the final taxonomy.
 
 # Purpose
 
-Apply only approved taxonomy changes.
+Apply only human-approved taxonomy changes.
 
-Produce the final approved taxonomy.
+Generate the final approved page intents.
+
+Update the taxonomy, curation history, and notes to reflect the approved changes.
+
+---
+
+# Preconditions
+
+The following must be available:
+
+- PAGE_INTENT_CANDIDATES
+- PAGE_INTENT_CHANGE_PROPOSALS
+- USER_APPROVAL_TABLE
+- taxonomy.md
+- curation.md
+- specification/intent-taxonomy-context.md
+
+Stop immediately if any required input cannot be read.
 
 ---
 
@@ -15,7 +32,7 @@ Produce the final approved taxonomy.
 
 - PAGE_INTENT_CANDIDATES
 - PAGE_INTENT_CHANGE_PROPOSALS
-- Human approvals
+- USER_APPROVAL_TABLE
 
 ---
 
@@ -23,33 +40,31 @@ Produce the final approved taxonomy.
 
 Read:
 
-- specification/step1-schema.md
+- specification/intent-taxonomy-context.md
 
 ---
 
 # Procedure
 
-Apply only approved changes.
+1. Read PAGE_INTENT_CANDIDATES.
 
-Ignore rejected changes.
+2. Read PAGE_INTENT_CHANGE_PROPOSALS.
 
-Update:
+3. Read USER_APPROVAL_TABLE.
 
-- taxonomy.md
+4. Apply only the proposals marked APPROVED.
 
-Append to:
+5. Ignore every proposal marked REJECTED.
 
-- curation.md
+6. Update taxonomy.md to reflect the approved changes.
 
-Append observations to:
+7. Append the approval decisions to curation.md.
 
-- notes.md
+8. Append important observations to notes.md.
 
-Verify consistency.
+9. Verify consistency between the updated taxonomy and the approved proposals.
 
-Generate:
-
-PAGE_INTENT_FINAL
+10. Produce PAGE_INTENT_FINAL.
 
 ---
 
@@ -57,40 +72,50 @@ PAGE_INTENT_FINAL
 
 Verify:
 
-Every final intent
-
-- exists in taxonomy.md
-
-Every approval
-
-- is reflected in taxonomy.md
-
-Every approval and rejection
-
-- is recorded in curation.md
-
-Important observations
-
-- exist in notes.md
+- every approved proposal has been applied
+- no rejected proposal has been applied
+- every final intent exists in taxonomy.md
+- every approval and rejection has been recorded in curation.md
+- notes.md contains any important observations
+- PAGE_INTENT_FINAL matches the updated taxonomy
 
 ---
 
 # Constraints
 
-Never apply rejected proposals.
+Never:
 
-Never lose previous curation history.
+- apply rejected proposals
+- assume approval
+- modify previous curation history
+- overwrite audit history
+- fabricate taxonomy changes
+- fabricate notes or observations
 
-Never overwrite audit history.
+Always append new entries to curation.md.
+Always preserve the complete audit history.
 
 ---
 
 # Output
 
-PAGE_INTENT_FINAL
+- PAGE_INTENT_FINAL
 
 Updated:
 
 - taxonomy.md
 - curation.md
 - notes.md
+
+---
+
+# Success Criteria
+
+The skill succeeds only if:
+
+- PAGE_INTENT_FINAL has been generated
+- every approved proposal has been applied
+- every rejected proposal has been ignored
+- taxonomy.md is internally consistent
+- curation.md has been updated
+- all validation checks pass

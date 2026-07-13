@@ -1,50 +1,27 @@
 ### CONTEXT: ITERATION WORKFLOW
 
-**Step 1 — Generate Candidate Intents \& Change Proposals**
-
-|Step|Role|Starts With|Ends With|Human Validation|
-|-|-|-|-|-|
-|1. Generate Candidate Intents \& Change Proposals|AI|PAGE\_SOURCE\_URLS|PAGE\_INTENT\_CANDIDATES + PAGE\_INTENT\_CHANGE\_PROPOSALS|STEP\_1\_CHECKS|
-
-
-
-### INPUT: PAGE\_SOURCE\_URLS
-
-|url|
-|-|
-|\[INSERT URL HERE]|
-
-
-
-### DATA DICTIONARIES
-
-
-
-#### PAGE\_SOURCE\_URLS
-
-|Column|Description|
-|-|-|
-|url|URL of the customer support source page to analyze.|
-
-
-
-#### PAGE\_INTENT\_CANDIDATES
+#### PAGE_INTENT_CANDIDATES
 
 |url|intent\_name|intent\_description|evidence|
 |-|-|-|-|
 |\[Source URL]|\[verb\_object]|\[One-sentence description of the customer goal]|\[Exact text span from the source page]|
 
 
-
-#### PAGE\_INTENT\_CHANGE\_PROPOSALS
+#### PAGE_INTENT_CHANGE_PROPOSALS
 
 |url|change\_type|change\_instruction|change\_reason|change\_evidence|is\_approved|
 |-|-|-|-|-|-|
 |\[Source URL]|\[MERGE / SPLIT / RENAME / ADD / DELETE]|\[Short, precise description of the proposed change]|\[Reason why the change is recommended]|\[Exact text span supporting the change, if applicable]|No|
 
 
+#### USER_APPROVAL_TABLE
 
-#### STEP\_1\_CHECKS
+|url|change_type|change_instruction|change_reason|change_evidence|human_approval|
+|-|-|-|-|-|-|
+|[Source URL]|[MERGE / SPLIT / RENAME / ADD / DELETE]|[Short, precise description of the proposed change]|[Reason why the change is recommended]|[Exact text span supporting the change, if applicable]|[APPROVED / REJECTED]|
+
+
+#### REVIEW_VALIDATION_CHECKS
 
 |check\_type|check\_name|check\_instruction|is\_approved|
 |-|-|-|-|
@@ -53,5 +30,11 @@
 |check\_reasoning|check\_change\_proposal\_reasons|Verify that every proposed MERGE, SPLIT, RENAME, ADD, or DELETE is reasonable and clearly justified.|No|
 |check\_coverage|check\_intent\_coverage|Verify that no obvious customer goal or refinement proposal directly supported by the page has been omitted.|No|
 
+
+#### PAGE_INTENT_FINAL
+
+|url|intent_name|intent_description|evidence|
+|-|-|-|-|
+|[Source URL]|[verb_object]|[One-sentence description of the customer goal]|[Exact text span from the source page]|
 
 
