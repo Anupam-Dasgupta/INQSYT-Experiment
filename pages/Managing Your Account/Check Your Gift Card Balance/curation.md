@@ -1,0 +1,7 @@
+#### PAGE_INTENT_CANDIDATES
+
+|url|intent\_name|intent\_description|evidence|
+|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref\_=hp\_left\_v4\_sib\&nodeId=GJDWQ6WX5MKQP3E6|check_gift_card_balance|Check the current balance of Amazon.com Gift Cards stored in the customer's account.|To find your Amazon.com Gift Card balance in Your Account: 1. Go to **Your Account**. 2. Select **Gift cards** and check the balance on any of your **Amazon.com** Gift Cards.|
+|https://www.amazon.com/gp/help/customer/display.html?ref\_=hp\_left\_v4\_sib\&nodeId=GJDWQ6WX5MKQP3E6|check_unvalued_physical_gift_card|Check the value of a physical Amazon.com Gift Card that does not have the value printed on it using Your Orders.|Some physical gift cards bought from **Amazon.com** don't come with values printed on them. In this case, you can check the value by going to **Your Orders**. In **Your Orders**, find the gift card order, and compare the 16-digit serial number (located beside the gift card amount) in the order details to the serial number on the back of the gift card.|
+|https://www.amazon.com/gp/help/customer/display.html?ref\_=hp\_left\_v4\_sib\&nodeId=GJDWQ6WX5MKQP3E6|view_gift_card_transactions|View the transaction history and changes to the Amazon.com Gift Card balance.|You can check all changes to your balance in the transaction section of your **Balance Page**, including order IDs or serial numbers.|
