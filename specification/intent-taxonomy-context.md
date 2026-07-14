@@ -38,6 +38,46 @@
 |[Source URL]|[verb_object]|[One-sentence description of the customer goal]|[Exact text span from the source page]|
 
 
+#### PAGE_CHUNK_CANDIDATES
+
+|url|chunk_id|supported_intents|candidate_chunk|chunk_boundary_justification|evidence|
+|-|-|-|-|-|-|
+|[Source URL]|[chunk_name]|[Comma-separated approved intent names]|[Exact contiguous text copied from the source page]|[Reason why this chunk forms a distinct semantic unit and should remain separate from adjacent content]|[Exact text span from the source page]|
+
+
+#### PAGE_CHUNK_CHANGE_PROPOSALS
+
+|url|change_type|change_instruction|change_reason|change_evidence|is_approved|
+|-|-|-|-|-|-|
+|[Source URL]|[ADD / DELETE / MERGE / SPLIT / MODIFY / REASSIGN]|[Short, precise description of the proposed chunking change]|[Reason why the change improves semantic coherence or retrieval quality]|[Exact text span supporting the change]|No|
+
+
+#### PAGE_CHUNK_FINAL
+
+|url|chunk_id|supported_intents|final_chunk|chunk_boundary_justification|evidence|
+|-|-|-|-|-|-|
+|[Source URL]|[chunk_name]|[Comma-separated approved intent names]|[Exact contiguous text copied from the source page]|[Reason why this approved chunk forms a distinct semantic unit and should remain separate from adjacent content]|[Exact text span from the source page]|
+
+
+#### CHUNKING_VALIDATION_CHECKS
+
+|check_type|check_name|check_instruction|is_approved|
+|-|-|-|-|
+|check_format|check_output_formats|Verify that PAGE_CHUNK_CANDIDATES and PAGE_CHUNK_CHANGE_PROPOSALS conform to their expected schemas.|No|
+|check_coverage|check_intent_chunk_coverage|Verify that every intent in PAGE_INTENT_FINAL is supported by one or more candidate chunks.|No|
+|check_evidence|check_chunk_grounding|Verify that every candidate chunk and every proposed chunking change is supported by evidence from the source page.|No|
+|check_boundaries|check_chunk_boundaries|Verify that chunk boundaries preserve coherent semantic units and do not unnecessarily split procedures or combine unrelated customer goals.|No|
+|check_reasoning|check_chunk_change_reasons|Verify that every proposed ADD, DELETE, MERGE, SPLIT, MODIFY, or REASSIGN operation is reasonable and clearly justified.|No|
+|check_retrieval|check_retrieval_quality|Verify that the proposed chunking supports effective semantic retrieval for the approved intents.|No|
+
+
+#### USER_APPROVAL_CHUNK_TABLE
+
+|url|change_type|change_instruction|change_reason|change_evidence|human_approval|
+|-|-|-|-|-|-|
+|[Source URL]|[ADD / DELETE / MERGE / SPLIT / MODIFY / REASSIGN]|[Short, precise description of the proposed chunking change]|[Reason why the change improves semantic coherence or retrieval quality]|[Exact text span supporting the change]|[APPROVED / REJECTED]|
+
+
 ## NOTES
 
 notes.md records semantic observations that may assist future chunk generation,
