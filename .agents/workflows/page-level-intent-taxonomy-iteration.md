@@ -53,7 +53,7 @@ File purposes:
 - source.md — Input source page URL.
 - taxonomy.md — Final approved taxonomy for the current page.
 - curation.md — Append-only audit log for the current page.
-- notes.md — Page-specific observations recorded during finalization.
+- notes.md — Semantic observations that assist future chunk generation, retrieval, and corpus-wide taxonomy consolidation.
 
 ---
 
@@ -79,13 +79,38 @@ Until Step 1 has completed successfully, do not:
 
 3. Do not assume, infer, or fabricate the page_directory.
 
-4. Only after the page_directory has been provided:
+4. Verify that the supplied page_directory exists.
 
-   - Verify that the directory exists.
-   - Verify that source.md, taxonomy.md, curation.md, and notes.md exist.
-   - Read source.md.
-   - Extract the source_url.
-   - Determine the remote_address from mcp.json.
+5. Verify that source.md exists inside the page_directory.
+
+6. If source.md does not exist, stop immediately.
+
+7. For each of the following files:
+
+   - taxonomy.md
+   - curation.md
+   - notes.md
+
+   If the file does not exist:
+
+   - create an empty markdown file with the required filename
+   - do not overwrite any existing file
+   - do not write any initial content
+
+8. Verify that the following files now exist:
+
+   - source.md
+   - taxonomy.md
+   - curation.md
+   - notes.md
+
+9. Read source.md.
+
+10. Extract the source_url.
+
+11. Determine the remote_address from mcp.json.
+
+Proceed only after all required inputs have been collected and validated.
 
 Do not execute any subsequent workflow step until Step 1 has completed successfully.
 

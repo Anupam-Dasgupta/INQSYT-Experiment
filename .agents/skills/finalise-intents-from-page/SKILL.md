@@ -60,7 +60,32 @@ Read:
 
 7. Append the approval decisions to curation.md.
 
-8. Append important observations to notes.md.
+8. Append observations to notes.md that may assist future chunk generation, retrieval, and corpus-wide taxonomy consolidation.
+
+Examples include:
+
+- page summary
+- primary customer goals
+- semantic section boundaries
+- chunking recommendations
+- retrieval challenges
+- navigation structure
+- intent boundary ambiguities
+- terminology inconsistencies
+- reusable extraction patterns
+- documentation quality observations
+- future taxonomy cleanup opportunities
+- edge cases
+
+Do not record:
+
+- workflow events
+- approval decisions
+- rejected proposals
+- accepted proposals
+- audit history
+
+These belong exclusively in curation.md.
 
 9. Verify consistency between the updated taxonomy and the approved proposals.
 

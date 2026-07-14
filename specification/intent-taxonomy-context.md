@@ -38,3 +38,34 @@
 |[Source URL]|[verb_object]|[One-sentence description of the customer goal]|[Exact text span from the source page]|
 
 
+## NOTES
+
+notes.md records semantic observations that may assist future chunk generation,
+retrieval optimization, and corpus-wide taxonomy consolidation.
+
+Record information such as:
+
+- page summary
+- primary customer goals
+- semantic section boundaries
+- chunking recommendations
+- retrieval challenges
+- navigation structure
+- intent boundary ambiguities
+- terminology inconsistencies
+- reusable extraction patterns
+- documentation quality observations
+- future taxonomy cleanup opportunities
+- edge cases
+
+Do not record:
+
+- workflow events
+- approval decisions
+- accepted proposals
+- rejected proposals
+- audit history
+
+These belong exclusively in curation.md.
+
+
