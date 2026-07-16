@@ -1,30 +1,13 @@
 ---
 name: finalise-intents-from-page
-description: Apply approved taxonomy changes and generate the final taxonomy.
+description: Apply approved taxonomy changes, generate the final taxonomy, and maintain structured project documentation.
 ---
 
 # Purpose
 
-Apply only human-approved taxonomy changes.
+Apply only the taxonomy changes explicitly approved by the human reviewer.
 
-Generate the final approved page intents.
-
-Update the taxonomy, curation history, and notes to reflect the approved changes.
-
----
-
-# Preconditions
-
-The following must be available:
-
-- PAGE_INTENT_CANDIDATES
-- PAGE_INTENT_CHANGE_PROPOSALS
-- USER_APPROVAL_TABLE
-- taxonomy.md
-- curation.md
-- specification/intent-taxonomy-context.md
-
-Stop immediately if any required input cannot be read.
+Generate the final approved taxonomy while preserving the complete audit trail and maintaining project documentation.
 
 ---
 
@@ -32,7 +15,7 @@ Stop immediately if any required input cannot be read.
 
 - PAGE_INTENT_CANDIDATES
 - PAGE_INTENT_CHANGE_PROPOSALS
-- USER_APPROVAL_TABLE
+- Human approvals
 
 ---
 
@@ -40,93 +23,202 @@ Stop immediately if any required input cannot be read.
 
 Read:
 
-- specification/intent-taxonomy-context.md
+- specification/step1-schema.md
 
 ---
 
 # Procedure
 
-1. Read PAGE_INTENT_CANDIDATES.
+## 1. Apply Taxonomy Changes
 
-2. Read PAGE_INTENT_CHANGE_PROPOSALS.
+Apply **only** approved taxonomy changes.
 
-3. Read USER_APPROVAL_TABLE.
+Ignore every rejected proposal.
 
-4. Apply only the proposals marked APPROVED.
+Update:
 
-5. Ignore every proposal marked REJECTED.
-
-6. Update taxonomy.md to reflect the approved changes.
-
-7. Append the approval decisions to curation.md.
-
-8. Append observations to notes.md that may assist future chunk generation, retrieval, and corpus-wide taxonomy consolidation.
-
-Examples include:
-
-- page summary
-- primary customer goals
-- semantic section boundaries
-- chunking recommendations
-- retrieval challenges
-- navigation structure
-- intent boundary ambiguities
-- terminology inconsistencies
-- reusable extraction patterns
-- documentation quality observations
-- future taxonomy cleanup opportunities
-- edge cases
-
-Do not record:
-
-- workflow events
-- approval decisions
-- rejected proposals
-- accepted proposals
-- audit history
-
-These belong exclusively in curation.md.
-
-9. Verify consistency between the updated taxonomy and the approved proposals.
-
-10. Produce PAGE_INTENT_FINAL.
+- taxonomy.md
 
 ---
 
-# Validation
+## 2. Update Curation History
 
-Verify:
+Append a new entry to:
 
-- every approved proposal has been applied
-- no rejected proposal has been applied
-- every final intent exists in taxonomy.md
-- every approval and rejection has been recorded in curation.md
-- notes.md contains any important observations
-- PAGE_INTENT_FINAL matches the updated taxonomy
+- curation.md
 
----
+The curation history must include:
 
-# Constraints
+- Approved proposals
+- Rejected proposals
+- Intent merges
+- Intent deletions
+- Intent renames
+- Human reasoning (when available)
 
-Never:
-
-- apply rejected proposals
-- assume approval
-- modify previous curation history
-- overwrite audit history
-- fabricate taxonomy changes
-- fabricate notes or observations
-
-Always append new entries to curation.md.
-Always preserve the complete audit history.
+Never rewrite previous curation history.
 
 ---
 
-# Output
+## 3. Update `notes.md`
 
-- PAGE_INTENT_FINAL
+Append a new iteration to `notes.md`.
 
-Updated:
+The file must preserve all previous content and maintain the exact structure shown below.
+
+Do **not** invent new headings.
+
+Do **not** remove existing headings.
+
+Do **not** overwrite previous iterations.
+
+Use the following template exactly.
+
+# Notes
+
+## General Observations About the Page
+
+Summarize:
+
+- what the page primarily covers
+- overall purpose
+- notable documentation characteristics
+
+---
+
+## Navigation Structure
+
+Describe:
+
+- page sections
+- navigation flow
+- major workflows
+- logical organization
+
+---
+
+## Page Quality Observations
+
+Record observations such as:
+
+- clarity
+- duplication
+- inconsistencies
+- redirects
+- formatting quality
+- readability
+- documentation quality
+
+---
+
+## Missing Documentation
+
+Record important information that appears missing or insufficiently explained.
+
+---
+
+## Missing Intents (Intentionally Excluded)
+
+List user intents that may appear related but should **not** become taxonomy intents.
+
+Include a brief explanation for each exclusion.
+
+---
+
+## Retrieval Challenges
+
+Describe any retrieval difficulties, including:
+
+- mixed topics
+- overlapping concepts
+- scattered information
+- long workflows
+- retrieval ambiguity
+- embedding challenges
+
+---
+
+## RAG Chunking Recommendations
+
+Recommend logical chunk boundaries for retrieval.
+
+Each recommendation should preserve semantic meaning while maximizing retrieval quality.
+
+---
+
+## Intent Ambiguity Observations
+
+Describe situations where:
+
+- multiple intents overlap
+- terminology is ambiguous
+- similar user requests could map to different intents
+
+---
+
+## Reusable Extraction Patterns
+
+Record reusable linguistic patterns such as:
+
+- conditional wording
+- fallback wording
+- approval language
+- redirect language
+- common documentation styles
+- recurring extraction cues
+
+These observations should help improve future extraction.
+
+---
+
+## Taxonomy Design Observations
+
+Document:
+
+- naming decisions
+- intent merges
+- taxonomy simplifications
+- structural improvements
+- normalization decisions
+
+---
+
+## Edge Cases Noticed During Extraction
+
+Document unusual situations such as:
+
+- asynchronous workflows
+- human approvals
+- exception paths
+- conditional behavior
+- uncommon business rules
+
+---
+
+## Iteration <N> - Observations (<DATE>)
+
+Append a new iteration only.
+
+Each iteration should summarize:
+
+- important extraction observations
+- approved taxonomy changes
+- rejected taxonomy changes
+- retrieval observations
+- taxonomy decisions
+- chunking observations
+- notable edge cases
+- lessons useful for future pages
+
+Never modify previous iterations.
+
+Always append the new iteration beneath the existing ones.
+
+---
+
+## 4. Verify Consistency
+
+After updating all files, verify that every approved taxonomy change has been reflected consistently across:
 
 - taxonomy.md
 - curation.md
@@ -134,13 +226,73 @@ Updated:
 
 ---
 
-# Success Criteria
+## Generate
 
-The skill succeeds only if:
+Generate:
 
-- PAGE_INTENT_FINAL has been generated
-- every approved proposal has been applied
-- every rejected proposal has been ignored
-- taxonomy.md is internally consistent
-- curation.md has been updated
-- all validation checks pass
+- PAGE_INTENT_FINAL
+
+---
+
+# Validation
+
+Verify that:
+
+### Taxonomy
+
+- Every final intent exists in `taxonomy.md`.
+- No rejected proposal has been applied.
+- Every approved proposal has been applied exactly once.
+
+### Curation
+
+- Every approval is recorded.
+- Every rejection is recorded.
+- Previous curation history has been preserved.
+- New decisions have been appended rather than replacing existing history.
+
+### Notes
+
+Verify that:
+
+- `notes.md` still contains all previous iterations.
+- A new iteration has been appended.
+- The required headings appear exactly as specified.
+- No headings have been renamed.
+- No previous notes have been deleted.
+- Previous iterations remain unchanged.
+- The document structure matches the established template.
+
+---
+
+# Constraints
+
+Never apply rejected proposals.
+
+Never overwrite:
+
+- taxonomy history
+- curation history
+- notes history
+
+Always append.
+
+Never rewrite previous iterations.
+
+Never invent additional headings in `notes.md`.
+
+Always preserve the established `notes.md` structure.
+
+---
+
+# Output
+
+Generate:
+
+- PAGE_INTENT_FINAL
+
+Updated files:
+
+- taxonomy.md
+- curation.md
+- notes.md
