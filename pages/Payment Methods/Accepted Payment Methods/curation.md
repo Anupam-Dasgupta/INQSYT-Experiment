@@ -1,0 +1,10 @@
+### PAGE_INTENT_CANDIDATES
+
+|url|intent_name|intent_description|evidence|
+|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GFBWMNXEPYVJAY9A|check_accepted_payment_methods|Check which credit, debit, or prepaid cards and payment networks are accepted on Amazon.com.|Amazon.com accepts a variety of payment options, including credit and debit cards. The following payment methods are available for use:|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GFBWMNXEPYVJAY9A|manage_payment_details|Add a new payment card or update existing payment details in Amazon Wallet.|You can add a completely new payment card or change your existing payment details, without having to place an order, in your Amazon Wallet.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GFBWMNXEPYVJAY9A|pay_with_gift_card|Use an Amazon Gift Card to pay for an order.|You can also use Amazon Gift Cards to pay for your order.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GFBWMNXEPYVJAY9A|split_payment_with_gift_card|Pay for an order by splitting the payment between an accepted credit/debit card and an Amazon Gift Card.|You can split payment between one of the accepted credit or debit cards and an Amazon.com Gift Card, but you can't split payment among multiple cards.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GFBWMNXEPYVJAY9A|pay_with_fsa_hsa|Use a Flexible Spending Account (FSA) or Health Savings Account (HSA) to purchase eligible items.|We accept Flexible Spending Accounts (FSA), Health Savings Accounts (HSA) (U.S. billing addresses only) for the purchase of FSA or HSA eligible items.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GFBWMNXEPYVJAY9A|pay_with_snap_ebt|Use a SNAP EBT card from a participating state as a payment method for eligible items.|SNAP EBT cards are accepted as payment methods for valid cards from participating states. For more information, visit www.amazon.com/SNAP. EBT Cash benefits are not available as a payment method.|
