@@ -165,7 +165,21 @@ Expected Output:
 
 ---
 
-## Step 5 — Persist User Approvals
+## Step 5 — Persist Change Proposals
+
+Execute Skill:
+
+write-with-git
+
+Inputs:
+
+- PAGE_INTENT_CHANGE_PROPOSALS
+- page_directory/curation.md
+- write_mode = APPEND
+
+---
+
+## Step 6 — Persist User Approvals
 
 Execute Skill:
 
@@ -179,7 +193,7 @@ Inputs:
 
 ---
 
-## Step 6 — Finalize Taxonomy
+## Step 7 — Finalize Taxonomy
 
 Execute Skill:
 
@@ -197,7 +211,7 @@ Expected Output:
 
 ---
 
-## Step 7 — Persist Final Taxonomy
+## Step 8 — Persist Final Taxonomy
 
 Execute Skill:
 
@@ -211,7 +225,7 @@ Inputs:
 
 ---
 
-## Step 8 — Push Version History
+## Step 9 — Push Version History
 
 Execute Skill:
 
