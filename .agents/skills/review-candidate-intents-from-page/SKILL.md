@@ -1,49 +1,16 @@
 ---
 name: review-candidate-intents-from-page
-description: Critically review extracted candidate intents and generate evidence-supported taxonomy refinement proposals.
+description: Review page-level intent candidates and propose high-quality taxonomy refinements.
 ---
 
 # Purpose
 
-You are a taxonomy critic.
+Review the extracted candidate intents for a page and determine whether the existing taxonomy should be refined.
 
-Your job is to critically review the extracted candidate intents in PAGE_INTENT_CANDIDATES.
+This skill **never edits the taxonomy directly**.
+It only proposes changes for human review.
 
-Assume the extracted intents are a draft that may contain:
-
-- unsupported intents
-- duplicate intents
-- overlapping intents
-- inconsistent naming
-- inconsistent granularity
-- missing customer goals
-
-Your objective is to improve the quality, consistency, and maintainability of the taxonomy.
-
-Challenge the extracted candidate intents rather than accepting them at face value.
-
-Prefer improving existing candidate intents through:
-
-- DELETE
-- MERGE
-- SPLIT
-- RENAME
-
-Only propose ADD when an explicit customer goal supported by the page cannot be represented by any existing candidate intent.
-
-This skill proposes taxonomy refinements only.
-
-It never modifies the taxonomy or assumes human approval.
-
-# Preconditions
-
-The following must be available:
-
-- source_url
-- PAGE_INTENT_CANDIDATES
-- specification/intent-taxonomy-context.md
-
-Stop immediately if any required input cannot be read.
+The objective is **a compact, reusable, and scalable intent taxonomy**, not the most granular one.
 
 ---
 
@@ -58,186 +25,235 @@ Stop immediately if any required input cannot be read.
 
 Read:
 
-- specification/intent-taxonomy-context.md
+- specification/step1-schema.md
 
 ---
 
-# Procedure
+# Core Principle
 
-## Phase 1 — Review Individual Candidate Intents
+The taxonomy should represent **user goals**, not individual sentences or isolated features.
 
-Review every extracted candidate intent independently.
+A single sentence mentioning a capability **does not justify creating a new intent**.
 
-For every candidate intent evaluate:
-
-- Is the intent explicitly supported by the source page?
-- Does the intent represent exactly one customer goal?
-- Is the intent name clear, precise, and consistent with the required naming convention?
-- Is the scope appropriately granular?
-- Is the intent too broad?
-- Is the intent too narrow?
-- Does the evidence fully support the intent?
-
-If any issue is identified, record the appropriate refinement opportunity.
-
-Do not generate proposals yet.
+Prefer fewer, broader intents whenever they naturally represent the same user goal.
 
 ---
 
-## Phase 2 — Review Relationships Between Candidate Intents
+# Decision Order
 
-Compare every candidate intent against every other candidate intent.
+For every candidate intent, evaluate in the following order.
 
-Identify opportunities where:
+## 1. Can an existing intent already represent this?
 
-- two intents describe the same customer goal
-- one intent completely contains another
-- multiple intents should be merged
-- one intent should be split into multiple independent customer goals
-- naming conventions are inconsistent
-- intent boundaries overlap
-- customer goals are represented at inconsistent levels of abstraction
+If yes:
 
-Do not generate proposals yet.
+- Do NOT propose ADD.
+- Recommend mapping it to the existing intent.
+- Even if wording differs, prefer semantic similarity over exact wording.
 
----
+Examples:
 
-## Phase 3 — Review Coverage
+Existing:
+- manage_notifications
 
-Review the page as a whole.
+Page mentions:
+- promotional emails
+- restock emails
+- newsletters
+- notification preferences
 
-Determine whether every customer goal explicitly supported by the page has been represented.
+Do NOT propose four new intents.
 
-Only if a supported customer goal is missing from PAGE_INTENT_CANDIDATES should an ADD proposal be considered.
+They are all evidence supporting:
 
-Do not invent customer goals.
-
-Do not infer unsupported intents.
-
----
-
-## Phase 4 — Generate Taxonomy Change Proposals
-
-Generate proposals only where they clearly improve:
-
-- semantic precision
-- taxonomy consistency
-- customer goal separation
-- retrieval quality
-- long-term maintainability
-
-Evaluate proposal types in the following order:
-
-1. DELETE unsupported intents.
-2. MERGE duplicate or substantially overlapping intents.
-3. SPLIT intents representing multiple independent customer goals.
-4. RENAME unclear or inconsistent intent names.
-5. ADD missing evidence-supported intents.
-
-Do not generate a proposal unless it provides a clear improvement over the current candidate taxonomy.
-
-Every proposal must:
-
-- reference one or more candidate intents
-- contain supporting evidence
-- contain clear reasoning
-- identify the proposal type
-- follow the required schema defined in intent-taxonomy-context.md
-
-Multiple proposal types may reference the same candidate intent if justified.
+manage_notifications
 
 ---
 
-## Phase 5 — Human Approval
+## 2. Would expanding an existing intent make it sufficient?
 
-Present PAGE_INTENT_CHANGE_PROPOSALS.
+If yes:
 
-Request explicit approval or rejection for every proposal.
+Propose:
 
-Record every decision in USER_APPROVAL_TABLE.
+- MERGE
+or
+- RENAME
 
-Do not continue until every proposal has been explicitly marked as APPROVED or REJECTED.
+instead of ADD.
 
-Do not modify the taxonomy.
+Example:
 
-Do not assume approval.
+Existing:
+
+manage_cards
+
+Page introduces:
+
+- debit cards
+- credit cards
+- prepaid cards
+
+Better proposal:
+
+Rename
+
+manage_cards
+
+to
+
+manage_payment_methods
+
+rather than creating separate intents.
 
 ---
 
-## Phase 6 — Validation
+## 3. Is this merely a page-specific detail?
 
-Produce:
+If the information is:
 
-REVIEW_VALIDATION_CHECKS
+- one sentence
+- one paragraph
+- one option
+- one UI element
+- one feature under a broader workflow
 
-Verify:
+Do NOT create a new intent.
 
-- every candidate intent has been individually reviewed
-- every candidate intent has been compared against all other candidates
-- the entire page has been reviewed for missing customer goals
-- every proposal is evidence-supported
-- every proposal has clear reasoning
-- every proposal references one or more candidate intents
-- no duplicate proposals exist
-- USER_APPROVAL_TABLE is complete
+Treat it as evidence for the broader intent.
+
+---
+
+## 4. Does this represent a genuinely different user goal?
+
+Only propose ADD if ALL are true:
+
+- it represents a distinct user objective
+- it cannot naturally fit any existing intent
+- it is likely to appear across multiple pages
+- users would reasonably search for it independently
+- merging it would reduce retrieval quality
+
+Only then propose ADD.
+
+---
+
+# Strong Bias Against ADD
+
+Adding intents increases:
+
+- taxonomy size
+- maintenance cost
+- overlap
+- ambiguity
+- retrieval complexity
+
+Therefore:
+
+When uncertain,
+
+prefer
+
+- NO CHANGE
+- MERGE
+- RENAME
+
+over ADD.
+
+ADD should be the rarest proposal.
+
+---
+
+# Good Intent Characteristics
+
+An intent should represent:
+
+✔ a reusable user task
+
+Examples:
+
+- manage_subscription
+- update_shipping_address
+- manage_notifications
+- request_refund
+- track_order
+
+Not:
+
+- enable_sms_notification
+- unsubscribe_newsletter
+- change_restock_email
+- toggle_marketing_emails
+
+Those are all variations of a broader goal.
+
+---
+
+# When to Split
+
+Only propose SPLIT if a single intent now covers multiple unrelated user goals.
+
+Do NOT split simply because a page contains many details.
+
+---
+
+# When to Delete
+
+Only propose DELETE when an intent is:
+
+- obsolete
+- duplicated
+- fully absorbed into another intent
+
+Never delete solely because it does not appear on the current page.
+
+---
+
+# Proposal Requirements
+
+Every proposal must include:
+
+- proposal type
+- affected intent(s)
+- supporting page evidence
+- clear reasoning
+- expected impact
+
+Reasoning should explain **why the change improves the overall taxonomy**, not just the current page.
 
 ---
 
 # Output
 
+Produce:
+
 - PAGE_INTENT_CHANGE_PROPOSALS
-- USER_APPROVAL_TABLE
-- REVIEW_VALIDATION_CHECKS
+- STEP_1_CHECKS
 
 ---
 
-# Constraints
+# Validation Checklist
 
-Never:
+Before producing the output, verify:
 
-- modify the taxonomy
-- modify curation history
-- assume human approval
-- fabricate evidence
-- fabricate justification
-- invent unsupported customer goals
-- generate proposals solely to increase the number of intents
-- prefer ADD proposals over other proposal types
+✓ Every ADD was evaluated against all existing intents.
 
-Prefer improving existing candidate intents through:
+✓ Every ADD was rejected unless it represents a reusable independent user goal.
 
-- DELETE
-- MERGE
-- SPLIT
-- RENAME
+✓ Existing intents were preferred whenever reasonable.
 
-Only propose ADD when an explicit customer goal supported by the page cannot be represented by any existing candidate intent.
+✓ MERGE and RENAME were considered before ADD.
+
+✓ No proposal is based solely on one isolated sentence or feature.
+
+✓ Every proposal includes evidence and justification.
+
+✓ STEP_1_CHECKS is complete.
 
 ---
 
-# Success Criteria
+# Final Flow
 
-The skill succeeds only if:
+Present the generated PAGE_INTENT_CHANGE_PROPOSALS to the user for approval.
 
-- every candidate intent has been critically reviewed
-- every refinement proposal is evidence-supported
-- proposal types appropriately include DELETE, MERGE, SPLIT, RENAME, and ADD where justified
-- every proposal has an explicit human decision
-- USER_APPROVAL_TABLE is complete
-- REVIEW_VALIDATION_CHECKS is complete
-
----
-
-# Failure Conditions
-
-Stop immediately if:
-
-- source page cannot be read
-- PAGE_INTENT_CANDIDATES cannot be read
-- evidence is insufficient
-- human approval is unavailable
-
-Never fabricate taxonomy refinements.
-
-Never continue after a failed stage.
-```
+Never modify the taxonomy automatically.
