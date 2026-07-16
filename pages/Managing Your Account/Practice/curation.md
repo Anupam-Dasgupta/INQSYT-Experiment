@@ -19,3 +19,9 @@
 |check\_evidence|check\_intent\_grounding|Verify that every candidate intent and every proposed change is supported by evidence from the source page.|Yes|
 |check\_reasoning|check\_change\_proposal\_reasons|Verify that every proposed MERGE, SPLIT, RENAME, ADD, or DELETE is reasonable and clearly justified.|Yes|
 |check\_coverage|check\_intent\_coverage|Verify that no obvious customer goal or refinement proposal directly supported by the page has been omitted.|Yes|
+
+#### USER_APPROVAL_TABLE
+
+|url|change_type|change_instruction|change_reason|change_evidence|human_approval|
+|-|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref\_=hp\_left\_v4\_sib\&nodeId=GDK92DNLSGWTV6MP|MERGE|Merge candidate intents close_amazon_account and request_account_closure_as_non_holder into close_account.|Both intents represent the overarching goal of requesting the closure of the Amazon account and deletion of personal data, whether the user currently holds an active login account or not.|You can submit a request for us to close your Amazon account and delete your personal information permanently. / If you do not have an account, or if you are an authorized agent under applicable state law, email us.|APPROVED|
