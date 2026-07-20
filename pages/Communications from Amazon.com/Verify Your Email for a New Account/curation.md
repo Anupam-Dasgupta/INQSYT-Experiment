@@ -20,3 +20,11 @@
 |check_evidence|check_intent_grounding|Verify that every candidate intent and every proposed change is supported by evidence from the source page.|Yes|
 |check_reasoning|check_change_proposal_reasons|Verify that every proposed MERGE, SPLIT, RENAME, ADD, or DELETE is reasonable and clearly justified.|Yes|
 |check_coverage|check_intent_coverage|Verify that no obvious customer goal or refinement proposal directly supported by the page has been omitted.|Yes|
+
+### USER_APPROVAL_TABLE
+
+|url|change_type|change_instruction|change_reason|change_evidence|human_approval|
+|-|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GU3U2EU63RCFDAP2|ADD|Add intent 'verify_email_for_new_account'|Add an intent for verifying the email address when creating a new Amazon account.|To verify your email address when creating a new account: 1. Select the link in the verification email. This email is sent automatically after you attempt to create the new account. 2. Follow the on-screen instructions.|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GU3U2EU63RCFDAP2|ADD|Add intent 'troubleshoot_missing_verification_email'|Add an intent for troubleshooting why the verification email is not received (e.g. spelling errors, spam folder).|Note: If you don't receive our verification email, do the following: * Confirm that you entered your email address correctly. * Check if the email is in your spam or junk folder.|REJECTED|
+
