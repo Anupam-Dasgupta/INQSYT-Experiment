@@ -70,11 +70,22 @@ They are the authoritative source.
 
 8. Produce the PAGE_INTENT_CANDIDATES table exactly as defined by the intent-taxonomy-context.md file.
 
+9. Present the completed PAGE_INTENT_CANDIDATES table to the user exactly as defined by the specification.
+
+10. Do not summarize, abbreviate, or omit rows from the table.
+
+11. Displaying PAGE_INTENT_CANDIDATES is informational only.
+
+12. After presenting the table, immediately return PAGE_INTENT_CANDIDATES to the calling workflow.
+
+13. Do not pause execution after displaying the table unless explicitly instructed by the calling workflow.
+
 ---
 
 # Output
 
-PAGE_INTENT_CANDIDATES
+- Present PAGE_INTENT_CANDIDATES to the user.
+- Return PAGE_INTENT_CANDIDATES to the calling workflow.
 
 ---
 
