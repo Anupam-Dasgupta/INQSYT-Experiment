@@ -92,7 +92,7 @@ Identify opportunities where:
 
 - two intents describe the same customer goal
 - one intent completely contains another
-- multiple intents should be merged
+- multiple intents should be grouped under a broader super-intent while preserving the original intents as sub-intents
 - one intent should be split into multiple independent customer goals
 - naming conventions are inconsistent
 - intent boundaries overlap
@@ -129,12 +129,31 @@ Generate proposals only where they clearly improve:
 Evaluate proposal types in the following order:
 
 1. DELETE unsupported intents.
-2. MERGE duplicate or substantially overlapping intents.
+2. MERGE related intents under a broader super-intent while preserving every merged intent as a sub-intent.
 3. SPLIT intents representing multiple independent customer goals.
 4. RENAME unclear or inconsistent intent names.
 5. ADD missing evidence-supported intents.
 
 Do not generate a proposal unless it provides a clear improvement over the current candidate taxonomy.
+
+### MERGE Semantics
+
+A MERGE proposal must never replace or discard the merged candidate intents.
+
+Instead, it must:
+
+- create one broader super-intent
+- preserve every merged candidate intent as a sub-intent of that super-intent
+- state the proposed super-intent name explicitly
+- list every preserved sub-intent explicitly
+- ensure the final taxonomy records one row per super-intent/sub-intent relationship
+
+For example, merging `edit_address` and `edit_name` into `manage_account` must produce both relationships:
+
+- `manage_account` | `edit_address`
+- `manage_account` | `edit_name`
+
+The merged intents remain represented in the taxonomy as sub-intents; they are not deleted.
 
 Every proposal must:
 
@@ -179,6 +198,8 @@ Verify:
 - every proposal has clear reasoning
 - every proposal references one or more candidate intents
 - no duplicate proposals exist
+- every MERGE proposal identifies exactly one super-intent and all preserved sub-intents
+- no MERGE proposal discards the original merged intents
 - USER_APPROVAL_TABLE is complete
 
 ---
@@ -202,6 +223,8 @@ Never:
 - fabricate justification
 - invent unsupported customer goals
 - generate proposals solely to increase the number of intents
+- treat MERGE as destructive replacement of the source intents
+- omit merged intents from the resulting taxonomy hierarchy
 - prefer ADD proposals over other proposal types
 
 Prefer improving existing candidate intents through:

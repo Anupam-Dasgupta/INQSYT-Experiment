@@ -33,9 +33,21 @@
 
 #### PAGE_INTENT_FINAL
 
-|url|intent_name|intent_description|evidence|
-|-|-|-|-|
-|[Source URL]|[verb_object]|[One-sentence description of the customer goal]|[Exact text span from the source page]|
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+|[Source URL]|[verb_object]|[verb_object or empty]|[One-sentence description of the customer goal represented by this row]|[Exact text span from the source page]|
+
+For an approved MERGE, preserve the merged intents as sub-intents beneath the new super-intent. Emit one row per super-intent/sub-intent relationship.
+
+Example:
+
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+|[Source URL]|manage_account|edit_address|Manage account information, including address changes.|[Exact supporting text span]|
+|[Source URL]|manage_account|edit_name|Manage account information, including name changes.|[Exact supporting text span]|
+|[Source URL]|request_lawyer||Request assistance from a lawyer.|[Exact supporting text span]|
+
+If an intent has no sub-intent, leave the `sub-intent` cell empty.
 
 
 #### PAGE_CHUNK_CANDIDATES
