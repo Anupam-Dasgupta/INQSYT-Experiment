@@ -51,3 +51,10 @@ Consolidated `close_amazon_account` (registered account holders) and `request_ac
 - Extracted two candidate intents (`close_amazon_account`, `request_account_closure_as_non_holder`).
 - Merged them into a single `close_account` intent for cleaner taxonomy.
 - Formulated retrieval observations and chunking recommendations.
+
+## Iteration 2 - Observations (2026-07-20)
+
+- Extracted candidate intents (`request_account_closure_and_data_deletion`, `request_closure_and_deletion_without_account`).
+- Approved merge of candidate intents into `close_account` super-intent.
+- Preserved merged candidate intents as sub-intents of the `close_account` super-intent according to the custom merge semantics.
+- Used the 5-column schema to represent the final taxonomy.
