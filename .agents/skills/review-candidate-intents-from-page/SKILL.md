@@ -164,7 +164,59 @@ Do not assume approval.
 
 ---
 
-## Phase 6 — Validation
+## Phase 6 — Construct Final Intent Table
+
+After all proposals receive human decisions, construct FINAL_INTENT_TABLE.
+
+Columns:
+
+- intent
+- description
+- source_chunks
+- subintents
+
+### Rules
+
+**Approved MERGE**
+- Retain the approved super intent.
+- Every merged-away intent becomes a subintent.
+
+**Approved DELETE**
+- Deleted intent names are attached as subintents of the retained canonical intent whose semantics best represent them.
+
+**Rejected ADD**
+- Do not create a new canonical intent.
+- Attach the rejected intent name as a subintent of the closest retained canonical intent.
+
+**Dropped / Non-retained Candidate Intents**
+- Any candidate intent that does not become a canonical intent, but whose semantics are represented by a retained canonical intent, must be stored as a subintent.
+
+**Approved RENAME**
+- Replace the canonical name.
+- Do not create a subintent unless explicitly required by downstream systems.
+
+**Approved SPLIT**
+- Each resulting intent becomes an independent canonical intent.
+- No subintents are created solely because of a split.
+
+**Empty Subintents**
+- If none exist, use:
+  ```yaml
+  subintents: []
+  ```
+
+### Invariants
+
+- Every intent name must appear exactly once in the final taxonomy.
+- An intent name must appear either:
+  - as a canonical intent, OR
+  - as a subintent.
+- No subintent may belong to multiple canonical intents.
+- Canonical intent names must never appear inside subintents.
+
+---
+
+## Phase 7 — Validation
 
 Produce:
 
@@ -180,6 +232,12 @@ Verify:
 - every proposal references one or more candidate intents
 - no duplicate proposals exist
 - USER_APPROVAL_TABLE is complete
+- FINAL_INTENT_TABLE is complete
+- every approved merge contributes subintents
+- every rejected ADD is preserved as a subintent
+- every approved DELETE is preserved as a subintent
+- every non-retained intent appears exactly once as a subintent
+- no duplicate subintents exist
 
 ---
 
@@ -187,6 +245,7 @@ Verify:
 
 - PAGE_INTENT_CHANGE_PROPOSALS
 - USER_APPROVAL_TABLE
+- FINAL_INTENT_TABLE
 - REVIEW_VALIDATION_CHECKS
 
 ---
@@ -224,6 +283,11 @@ The skill succeeds only if:
 - proposal types appropriately include DELETE, MERGE, SPLIT, RENAME, and ADD where justified
 - every proposal has an explicit human decision
 - USER_APPROVAL_TABLE is complete
+- FINAL_INTENT_TABLE is complete
+- every merged intent is preserved as a subintent
+- every rejected ADD is preserved as a subintent
+- every deleted/non-retained intent is preserved as a subintent
+- no duplicate subintents exist
 - REVIEW_VALIDATION_CHECKS is complete
 
 ---
@@ -240,4 +304,3 @@ Stop immediately if:
 Never fabricate taxonomy refinements.
 
 Never continue after a failed stage.
-```
