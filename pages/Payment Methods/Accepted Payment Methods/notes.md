@@ -91,3 +91,16 @@ Consolidated all payment instrument details (debit, credit, gift cards, FSA/HSA,
 - **Chunking observations**: Clean semantic boundaries exist between general payment networks, wallet/gift card guidelines, and specialized benefit cards.
 - **Notable edge cases**: Split payment rules (only one card + gift card).
 - **Lessons useful for future pages**: Consolidating single-sentence rules under a parent intent prevents taxonomy explosion.
+
+---
+
+## Iteration 2 - Observations (2026-07-21)
+
+- **Important extraction observations**: Re-evaluated candidates under the latest skill sets to represent sub-tasks (Wallet, Gift Cards, FSA/HSA, SNAP EBT) using merge-preserved sub-intents.
+- **Approved taxonomy changes**: Approved MERGE of all 4 sub-intents under the super-intent `check_accepted_payment_methods`.
+- **Rejected taxonomy changes**: None.
+- **Retrieval observations**: Users searching for specific cards (SNAP, HSA/FSA, Gift Cards) will match specific sub-intents under the main accepted payment methods category.
+- **Taxonomy decisions**: Utilized MERGE semantics to represent specific candidate intents as sub-intents in a 5-column layout rather than rejecting them.
+- **Chunking observations**: Chunks map cleanly to the individual sub-intents.
+- **Notable edge cases**: HSA/FSA billing address limitations and EBT Cash exclusion.
+- **Lessons useful for future pages**: Merging specific procedures as sub-intents of a broad informational parent preserves granular details while keeping the parent taxonomy clean.
