@@ -35,6 +35,8 @@ Apply **only** approved taxonomy changes.
 
 Ignore every rejected proposal.
 
+For every approved MERGE, create the proposed broader super-intent and preserve each merged source intent as a sub-intent. A MERGE must not delete or erase the merged intents from the taxonomy hierarchy.
+
 Update:
 
 - taxonomy.md
@@ -232,6 +234,19 @@ Generate:
 
 - PAGE_INTENT_FINAL
 
+`PAGE_INTENT_FINAL` must use the schema defined in `specification/intent-taxonomy-context.md`:
+
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+
+Generation rules:
+
+- Emit one row for every final intent relationship.
+- For an approved MERGE, set `intent_name` to the new super-intent and `sub-intent` to one preserved merged intent.
+- Emit one row per preserved sub-intent.
+- For an intent with no sub-intent, leave `sub-intent` empty.
+- Never output only the super-intent when approved merged sub-intents exist.
+
 ---
 
 # Validation
@@ -241,6 +256,10 @@ Verify that:
 ### Taxonomy
 
 - Every final intent exists in `taxonomy.md`.
+- Every approved MERGE has one super-intent and all of its preserved sub-intents represented.
+- No approved merged intent has been discarded or omitted.
+- Every `PAGE_INTENT_FINAL` row conforms to the five-column schema, including the `sub-intent` column immediately after `intent_name`.
+- Intents without sub-intents have an empty `sub-intent` cell.
 - No rejected proposal has been applied.
 - Every approved proposal has been applied exactly once.
 
@@ -268,6 +287,10 @@ Verify that:
 # Constraints
 
 Never apply rejected proposals.
+
+Never implement MERGE as destructive replacement of the merged intents.
+
+Never omit approved sub-intents from `PAGE_INTENT_FINAL` or `taxonomy.md`.
 
 Never overwrite:
 
