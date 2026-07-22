@@ -32,7 +32,7 @@ The page does not explain how to handle cards that support multiple currencies o
 
 ## Missing Intents (Intentionally Excluded)
 
-None. The single intent `select_card_currency_for_currency_converter` fully covers the checkout procedures described on this page.
+- Excluded general card setup in Wallet or general order payment decline troubleshooting (these are covered by separate dedicated pages: `manage_payment_details` and `resolve_declined_payment`).
 
 ---
 
@@ -88,3 +88,14 @@ Consolidated both mobile and desktop update procedures under the single intent `
 - **Chunking observations**: Splitting by platform (desktop vs mobile) helps keep RAG search precise depending on the user's interface.
 - **Notable edge cases**: Storing card currency preferences for future checkouts.
 - **Lessons useful for future pages**: Action-oriented support pages with dual desktop/mobile paths are best represented as a single intent.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Confirmed checkout-level card currency selection steps for desktop and mobile, ensuring these remain consolidated under a single user intent.
+- **Approved taxonomy changes**: Confirmed the ADD proposal for `select_card_currency_for_currency_converter` and updated the taxonomy to the 5-column schema with empty sub-intent cells for uniformity.
+- **Rejected taxonomy changes**: None.
+- **Retrieval observations**: Verified that platform-specific search terms ("desktop currency change" or "mobile card currency selector") route to the single unified intent.
+- **Taxonomy decisions**: Maintained the unified single-intent taxonomy structure since desktop and mobile procedures achieve the identical user goal.
+- **Chunking observations**: Splitting chunks by interface platform (desktop steps vs mobile steps) remains optimal for context window retrieval.
+- **Notable edge cases**: Automatic setting storage and persistence across multiple sessions.
+- **Lessons useful for future pages**: Ensure all flat-taxonomy single-intent pages consistently adopt the 5-column sub-intent layout with empty cells for standardized integration.
