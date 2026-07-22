@@ -36,7 +36,6 @@ The page does not specify response times or details on what actions Amazon takes
 
 ## Missing Intents (Intentionally Excluded)
 
-- `report_scam_to_ftc`: Excluded as a separate intent because it represents an external agency reporting recommendation and is a sub-flow of general reporting.
 - `report_brushing_scam`, `report_gift_card_fraud`: Excluded as this page only links to other specialized help pages for those topics.
 
 ---
@@ -92,3 +91,14 @@ A single unified intent `report_amazon_scam` is used to prevent over-granularity
 - **Chunking observations**: Logical division matches reporting wizard, non-account email, and external resources.
 - **Notable edge cases**: Reporting flow for non-account holders.
 - **Lessons useful for future pages**: Keep the focus on Amazon's primary action (reporting to Amazon) and treat external redirection (like FTC) as secondary details.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Re-confirmed the wizard-based branching and non-customer email channel reporting details.
+- **Approved taxonomy changes**: Confirmed the ADD proposal for `report_amazon_scam` and updated the taxonomy to the 5-column schema with empty sub-intent cells.
+- **Rejected taxonomy changes**: The proposal to DELETE `report_scam_to_ftc` was rejected by the user, so it is retained as a separate approved intent in the taxonomy.
+- **Retrieval observations**: Users wanting to report scams to external agencies (FTC) or to Amazon route to their respective intents.
+- **Taxonomy decisions**: Maintained two separate intents to cover both Amazon-internal reporting and FTC-external reporting as distinct capabilities.
+- **Chunking observations**: Splitting account-holder wizard links, non-account email instructions, and FTC/related resources remains optimal.
+- **Notable edge cases**: Non-account holder email reporting and banking/remote access wizard branches.
+- **Lessons useful for future pages**: Ensure all intents, including those kept after rejected deletes, adopt the 5-column sub-intent layout with empty cells for standardized integration.
