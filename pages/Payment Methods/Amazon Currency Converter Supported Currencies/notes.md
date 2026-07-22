@@ -29,7 +29,7 @@ The page does not explain what happens if a credit card is issued by a bank that
 
 ## Missing Intents (Intentionally Excluded)
 
-None. The single intent `check_currency_converter_supported_currencies` fully covers the informational scope of this page.
+- Excluded general card setup in Wallet or general order payment decline troubleshooting (these are covered by separate dedicated pages: `manage_payment_details` and `resolve_declined_payment`).
 
 ---
 
@@ -81,3 +81,14 @@ Consolidated currency support, card brand compatibility, and shipping windows un
 - **Chunking observations**: Tabular data is best kept contiguous to preserve relational context.
 - **Notable edge cases**: American Express exclusions for certain South American currencies.
 - **Lessons useful for future pages**: Tables containing large numbers of rows are best handled as a single semantic retrieval unit if possible.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Re-evaluated the page content and confirmed that it remains a lookup reference listing supported currencies and card brands.
+- **Approved taxonomy changes**: Confirmed the ADD proposal for `check_currency_converter_supported_currencies` and updated the taxonomy to the 5-column schema with empty sub-intent cells for schema uniformity.
+- **Rejected taxonomy changes**: None.
+- **Retrieval observations**: User queries containing specific currency codes (USD, EUR, INR) or country names (India, Brazil, etc.) will resolve to this single intent.
+- **Taxonomy decisions**: Keeping a single flat intent as it fully represents the page's narrow, list-based goal.
+- **Chunking observations**: Since this is a lookup table, it is best kept as a single chunk to prevent losing tabular correlation.
+- **Notable edge cases**: American Express exclusions for BRL, BOB, and CLP, which need to be kept intact inside the chunk.
+- **Lessons useful for future pages**: Ensure pages with no sub-intents conform to the 5-column sub-intent schema layout with empty cells to keep the corpus taxonomy structures fully consistent.
