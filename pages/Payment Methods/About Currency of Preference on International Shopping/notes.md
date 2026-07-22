@@ -31,7 +31,7 @@ The page does not explain how regional currency detection affects default settin
 
 ## Missing Intents (Intentionally Excluded)
 
-None. The single intent `change_currency_of_preference` covers all topics on this page.
+- Excluded general card setup in Wallet or general order payment decline troubleshooting (these are covered by separate dedicated pages: `manage_payment_details` and `resolve_declined_payment`).
 
 ---
 
@@ -86,3 +86,14 @@ Consolidated the display-only setting and the list of supported browsing currenc
 - **Chunking observations**: Separating the functional details of the feature from the long list of supported currencies is useful for precise retrieval.
 - **Notable edge cases**: The separation between display/order total (browsing currency) and payment total (charging currency).
 - **Lessons useful for future pages**: Differentiating browsing display settings from transactional payment settings is key to correct intent routing.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Re-confirmed that the page primarily covers display-only browsing preferences, distinct from billing/charging operations of the Amazon Currency Converter.
+- **Approved taxonomy changes**: Confirmed the ADD proposal for `change_currency_of_preference` and updated the taxonomy to the 5-column schema with empty sub-intent cells for uniformity.
+- **Rejected taxonomy changes**: None.
+- **Retrieval observations**: Verified that user requests regarding language/currency settings adjustments consistently route to the unified settings-focused intent.
+- **Taxonomy decisions**: Keeping a single flat intent matches the page's focus on setting and managing display preferences.
+- **Chunking observations**: Treating the supported currency list as a separate chunk keeps search matches for specific currencies precise.
+- **Notable edge cases**: The display of order totals in the preferred browsing currency vs the charged currency on the payment method.
+- **Lessons useful for future pages**: Ensure all flat-taxonomy single-intent pages consistently adopt the 5-column sub-intent layout with empty cells for standardized integration.

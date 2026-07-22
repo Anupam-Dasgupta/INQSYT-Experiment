@@ -24,3 +24,9 @@
 |url|change_type|change_instruction|change_reason|change_evidence|human_approval|
 |-|-|-|-|-|-|
 |https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GCFKTYVC8YXJLQDH|ADD|Add intent 'change_currency_of_preference'|Add a broad intent to cover selecting, changing, or updating the Currency of Preference on the currency settings page.|You can update your Currency of Preference by changing from USD (default currency) to your preferred currency in the currency settings page.|APPROVED|
+
+### FINAL_INTENT_TABLE
+
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GCFKTYVC8YXJLQDH|change_currency_of_preference||Change or update the Currency of Preference in the currency settings page to browse prices and see order totals in a preferred currency.|You can update your Currency of Preference by changing from USD (default currency) to your preferred currency in the currency settings page.|
