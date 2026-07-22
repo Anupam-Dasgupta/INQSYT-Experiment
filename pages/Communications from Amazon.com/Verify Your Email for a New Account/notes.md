@@ -84,3 +84,14 @@ The user rejected the separate intent for troubleshooting missing emails (`troub
 - **Chunking observations**: Distinct sections exist for verification steps and missing email troubleshooting.
 - **Notable edge cases**: Existing accounts and the "Email address already in use" error handling redirect.
 - **Lessons useful for future pages**: Rejecting standalone troubleshooting intents for minor helper procedures ensures a clean page-level taxonomy structure.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Re-confirmed that email verification and delivery troubleshooting are the two core sections of this page.
+- **Approved taxonomy changes**: Confirmed the MERGE proposal to keep `troubleshoot_missing_verification_email` nested under `verify_email_for_new_account` as a sub-intent, and updated both to the new 5-column schema.
+- **Rejected taxonomy changes**: None.
+- **Retrieval observations**: Users troubleshooting missing verification emails route to the sub-intent, while users verifying account email route to the main parent intent.
+- **Taxonomy decisions**: Nesting the helper troubleshooting intent under the primary verification intent keeps the hierarchy clean.
+- **Chunking observations**: Distinct chunks for verification procedures and troubleshooting remain appropriate.
+- **Notable edge cases**: Handling "Email address already in use" errors and existing account login recommendation.
+- **Lessons useful for future pages**: Map sub-intents using separate rows with the parent name in the `intent_name` column and the sub-intent in the `sub-intent` column.
