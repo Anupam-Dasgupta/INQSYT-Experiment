@@ -30,7 +30,7 @@ The page does not explain how a user should report a scammer if they have alread
 
 ## Missing Intents (Intentionally Excluded)
 
-None. The single intent `avoid_payment_scams` covers all the security and scam-avoidance guidelines described.
+- Excluded reporting forms or direct scam victim support chat (these are handled by the Customer Service hub).
 
 ---
 
@@ -86,3 +86,14 @@ Consolidated all phishing warnings, payment security rules, and external scam li
 - **Chunking observations**: Keeping the list of rules together is critical to preserve the relational checklist context.
 - **Notable edge cases**: Off-site seller transaction requests.
 - **Lessons useful for future pages**: Security and fraud prevention guidelines are best served as comprehensive, single-intent reference pages.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Re-confirmed that the page focuses purely on informational guidelines and warnings to identify/avoid scams, rather than transactional recovery flows.
+- **Approved taxonomy changes**: Confirmed the ADD proposal for `avoid_payment_scams` and updated the taxonomy to the 5-column schema with empty sub-intent cells for uniformity.
+- **Rejected taxonomy changes**: None.
+- **Retrieval observations**: Verified that searches regarding security guidelines or reporting phishing attempts map to this page.
+- **Taxonomy decisions**: Keeping security and fraud topics unified under a single broad intent avoids fragmented categories.
+- **Chunking observations**: Keeping the list of rules together is critical to preserve the relational context.
+- **Notable edge cases**: Sellers requesting payment off-site or using unapproved payment methods (e.g. wire transfers, gift cards).
+- **Lessons useful for future pages**: Ensure all flat-taxonomy single-intent pages consistently adopt the 5-column sub-intent layout with empty cells for standardized integration.
