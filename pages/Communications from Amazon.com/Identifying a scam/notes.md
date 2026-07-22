@@ -87,3 +87,14 @@ The user rejected the separate intent for reporting scams (`report_amazon_scam`)
 - **Chunking observations**: Distinct segments exist for diagnosing/identifying (red flags), verifying (tools), and reporting.
 - **Notable edge cases**: Reporting channels for non-account holders.
 - **Lessons useful for future pages**: Rejection of secondary intents (like reporting when verification is the primary theme) shows a preference for concise page-level intents.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Re-confirmed that communication verification remains the primary focus of this page, and the secondary reporting intent is intentionally excluded.
+- **Approved taxonomy changes**: Confirmed the ADD proposal for `verify_amazon_communication` and updated the taxonomy to the 5-column schema with empty sub-intent cells for uniformity.
+- **Rejected taxonomy changes**: Proposing `report_amazon_scam` was rejected.
+- **Retrieval observations**: Users wanting to confirm if an email or message is authentic map to this page.
+- **Taxonomy decisions**: Maintained the single flat intent taxonomy focusing on communication verification.
+- **Chunking observations**: Distinct segments exist for identifying red flags, verifying messages, and reporting.
+- **Notable edge cases**: Reporting channels for non-account holders via email.
+- **Lessons useful for future pages**: Ensure all flat-taxonomy single-intent pages consistently adopt the 5-column sub-intent layout with empty cells for standardized integration.
