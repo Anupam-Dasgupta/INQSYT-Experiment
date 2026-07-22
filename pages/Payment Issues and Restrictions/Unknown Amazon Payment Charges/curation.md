@@ -24,3 +24,9 @@
 |url|change_type|change_instruction|change_reason|change_evidence|human_approval|
 |-|-|-|-|-|-|
 |https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GSNBBJP63SM65UDB|ADD|Add intent 'identify_unknown_charge'|Add a broad intent to cover identifying or troubleshooting unknown or unrecognized charges on bank or credit card statements.|For help identifying the unknown charge, refer to the list of commonly seen descriptors on bank/card statements:|APPROVED|
+
+### FINAL_INTENT_TABLE
+
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GSNBBJP63SM65UDB|identify_unknown_charge||Identify or troubleshoot unknown or unrecognized Amazon charges on credit card or bank statements using transaction history and statement descriptors.|For help identifying the unknown charge, refer to the list of commonly seen descriptors on bank/card statements:|

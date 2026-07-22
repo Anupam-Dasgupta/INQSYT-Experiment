@@ -31,7 +31,7 @@ The page does not explain how to proceed if the descriptor seen on the statement
 
 ## Missing Intents (Intentionally Excluded)
 
-None. The single intent `identify_unknown_charge` covers the troubleshooting and identification steps comprehensively.
+- Excluded general billing dispute forms or bank chargeback claim procedures (these are external bank processes).
 
 ---
 
@@ -88,3 +88,14 @@ Consolidated all unrecognized charge troubleshooting, descriptor lists, and tran
 - **Chunking observations**: Tabular data mapping descriptors to services is best kept contiguous.
 - **Notable edge cases**: Split shipments creating multiple smaller statement lines.
 - **Lessons useful for future pages**: Troubleshooting pages explaining charge descriptors are highly informational and action-oriented.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Re-confirmed that matching unrecognized bank statement line-items to Amazon transaction history remains consolidated under a single troubleshooting intent.
+- **Approved taxonomy changes**: Confirmed the ADD proposal for `identify_unknown_charge` and updated the taxonomy to the 5-column schema with empty sub-intent cells for uniformity.
+- **Rejected taxonomy changes**: None.
+- **Retrieval observations**: Highly likely that user searches for descriptor strings like "AMZN.COM/BILL" or "AMZN Digital" will route here.
+- **Taxonomy decisions**: Keeping a single broad intent captures both statement line-item identification and verification steps.
+- **Chunking observations**: Keeping the list of statement descriptors as a standalone chunk remains key to retaining complete context.
+- **Notable edge cases**: Split orders appearing as separate statement lines and temporary bank authorizations.
+- **Lessons useful for future pages**: Ensure all flat-taxonomy single-intent pages consistently adopt the 5-column sub-intent layout with empty cells for standardized integration.
