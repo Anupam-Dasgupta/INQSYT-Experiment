@@ -30,7 +30,7 @@ The page does not provide error codes that customers can reference when communic
 
 ## Missing Intents (Intentionally Excluded)
 
-None. The single intent `resolve_declined_payment` covers all the details on this page.
+- Excluded specialized declines like subscription service declines or specific country payment issues (these are covered by separate policies).
 
 ---
 
@@ -86,3 +86,14 @@ Consolidated general payment declines, troubleshooting reasons, and the retry/ch
 - **Chunking observations**: Distinct semantic boundary between diagnosing the decline and resolving it on Amazon.
 - **Notable edge cases**: Security restrictions blocking decline details.
 - **Lessons useful for future pages**: Generic troubleshooting pages are best represented as single intents that link diagnosing with resolving.
+
+## Iteration 2 - Observations (2026-07-22)
+
+- **Important extraction observations**: Confirmed both troubleshooting reasons (bank-side) and order recovery actions (Amazon-side) remain consolidatd under a single user intent.
+- **Approved taxonomy changes**: Confirmed the ADD proposal for `resolve_declined_payment` and updated the taxonomy to the 5-column schema with empty sub-intent cells for uniformity.
+- **Rejected taxonomy changes**: None.
+- **Retrieval observations**: Verified that user searches for "declined payment", "failed card transaction", or "payment retry" route to the unified recovery intent.
+- **Taxonomy decisions**: Maintained the single flat intent taxonomy structure since troubleshooting and recovery steps are logically tied.
+- **Chunking observations**: Distinct semantic boundary between diagnosing decline reasons (bank-side) and resolving via "Your Orders" remains optimal for retrieval precision.
+- **Notable edge cases**: Security and privacy limitations preventing Amazon from displaying specific decline reasons.
+- **Lessons useful for future pages**: Ensure all flat-taxonomy single-intent pages consistently adopt the 5-column sub-intent layout with empty cells for standardized integration.

@@ -24,3 +24,9 @@
 |url|change_type|change_instruction|change_reason|change_evidence|human_approval|
 |-|-|-|-|-|-|
 |https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=G6P826S3WMEV8SPN|ADD|Add intent 'resolve_declined_payment'|Add a broad intent to cover troubleshooting, retrying, and changing payment methods for a declined order.|To retry a declined payment, go to Your Orders.|APPROVED|
+
+### FINAL_INTENT_TABLE
+
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=G6P826S3WMEV8SPN|resolve_declined_payment||Resolve a declined payment on an order by troubleshooting common decline reasons, retrying with the current payment method, or selecting a different payment method.|To retry a declined payment, go to Your Orders.|
