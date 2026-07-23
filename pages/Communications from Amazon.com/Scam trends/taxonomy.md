@@ -1,0 +1,10 @@
+# Taxonomy
+
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_order_confirmation_scams|Identify unauthorized purchase or order confirmation scams.|Order confirmation scams involve unexpected communications that often refer to an unauthorized purchase. Scammers ask you to act urgently to confirm or cancel the purchase.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_tech_support_scams|Identify fake tech support websites claiming to provide support for Amazon devices/services.|Tech support scams: Scammers create fake websites claiming to provide tech support for your Amazon devices and services.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_membership_scams|Identify fake Prime membership fee or renewal scams.|Prime Membership scams: Membership fee scams claim that a membership fee is owed, or that there's an issue with your membership.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_account_suspension_scams|Identify fraudulent account suspension or deletion notifications.|Account suspension/deletion scams claim your account will be suspended or deleted unless you take specific action.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_recall_refund_scams|Identify fake safety recall or refund scams.|Fake recall or refund scams involve fraudulent messages claiming your recent purchase has safety issues and needs immediate action.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_recruitment_scams|Identify fictitious Amazon job offers or recruitment scams.|Recruitment scams offer fictitious job opportunities, and usually come through unofficial channels, websites, emails, and text messages.|

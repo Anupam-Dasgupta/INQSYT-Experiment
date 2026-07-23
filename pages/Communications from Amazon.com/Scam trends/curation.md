@@ -1,0 +1,55 @@
+### PAGE_INTENT_CANDIDATES
+
+|url|intent_name|intent_description|evidence|
+|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|Review common Amazon scam trends and searchable databases of reported scams.|Review a sample of common scam trends... We've partnered with the Better Business Bureau to provide customers with a Scam Tracker, a searchable database of common scams.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|identify_order_confirmation_scams|Identify unauthorized purchase or order confirmation scams.|Order confirmation scams involve unexpected communications that often refer to an unauthorized purchase. Scammers ask you to act urgently to confirm or cancel the purchase.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|identify_tech_support_scams|Identify fake tech support websites claiming to provide support for Amazon devices/services.|Tech support scams: Scammers create fake websites claiming to provide tech support for your Amazon devices and services.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|identify_membership_scams|Identify fake Prime membership fee or renewal scams.|Prime Membership scams: Membership fee scams claim that a membership fee is owed, or that there's an issue with your membership.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|identify_account_suspension_scams|Identify fraudulent account suspension or deletion notifications.|Account suspension/deletion scams claim your account will be suspended or deleted unless you take specific action.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|identify_recall_refund_scams|Identify fake safety recall or refund scams.|Fake recall or refund scams involve fraudulent messages claiming your recent purchase has safety issues and needs immediate action.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|identify_recruitment_scams|Identify fictitious Amazon job offers or recruitment scams.|Recruitment scams offer fictitious job opportunities, and usually come through unofficial channels, websites, emails, and text messages.|
+
+### PAGE_INTENT_CHANGE_PROPOSALS
+
+|url|change_type|change_instruction|change_reason|change_evidence|is_approved|
+|-|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|ADD|Add intent 'check_scam_trends'|Add a primary super-intent to review common Amazon scams.|Review a sample of common scam trends... We've partnered with the Better Business Bureau to provide customers with a Scam Tracker, a searchable database of common scams.|No|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_order_confirmation_scams' into super-intent 'check_scam_trends'|Merge order confirmation scams as a specific sub-intent under check_scam_trends.|Order confirmation scams involve unexpected communications that often refer to an unauthorized purchase.|No|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_tech_support_scams' into super-intent 'check_scam_trends'|Merge tech support scams as a specific sub-intent under check_scam_trends.|Tech support scams: Scammers create fake websites claiming to provide tech support for your Amazon devices and services.|No|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_membership_scams' into super-intent 'check_scam_trends'|Merge Prime membership scams as a specific sub-intent under check_scam_trends.|Prime Membership scams: Membership fee scams claim that a membership fee is owed, or that there's an issue with your membership.|No|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_account_suspension_scams' into super-intent 'check_scam_trends'|Merge account suspension scams as a specific sub-intent under check_scam_trends.|Account suspension/deletion scams claim your account will be suspended or deleted unless you take specific action.|No|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_recall_refund_scams' into super-intent 'check_scam_trends'|Merge recall/refund scams as a specific sub-intent under check_scam_trends.|Fake recall or refund scams involve fraudulent messages claiming your recent purchase has safety issues and needs immediate action.|No|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_recruitment_scams' into super-intent 'check_scam_trends'|Merge recruitment scams as a specific sub-intent under check_scam_trends.|Recruitment scams offer fictitious job opportunities, and usually come through unofficial channels, websites, emails, and text messages.|No|
+
+### REVIEW_VALIDATION_CHECKS
+
+|check_type|check_name|check_instruction|is_approved|
+|-|-|-|-|
+|check_format|check_output_formats|Verify that PAGE_INTENT_CANDIDATES and PAGE_INTENT_CHANGE_PROPOSALS conform to their expected schemas.|Yes|
+|check_evidence|check_intent_grounding|Verify that every candidate intent and every proposed change is supported by evidence from the source page.|Yes|
+|check_reasoning|check_change_proposal_reasons|Verify that every proposed MERGE, SPLIT, RENAME, ADD, or DELETE is reasonable and clearly justified.|Yes|
+|check_coverage|check_intent_coverage|Verify that no obvious customer goal or refinement proposal directly supported by the page has been omitted.|Yes|
+
+### USER_APPROVAL_TABLE
+
+|url|change_type|change_instruction|change_reason|change_evidence|human_approval|
+|-|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|ADD|Add intent 'check_scam_trends'|Add a primary super-intent to review common Amazon scams.|Review a sample of common scam trends... We've partnered with the Better Business Bureau to provide customers with a Scam Tracker, a searchable database of common scams.|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_order_confirmation_scams' into super-intent 'check_scam_trends'|Merge order confirmation scams as a specific sub-intent under check_scam_trends.|Order confirmation scams involve unexpected communications that often refer to an unauthorized purchase.|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_tech_support_scams' into super-intent 'check_scam_trends'|Merge tech support scams as a specific sub-intent under check_scam_trends.|Tech support scams: Scammers create fake websites claiming to provide tech support for your Amazon devices and services.|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_membership_scams' into super-intent 'check_scam_trends'|Merge Prime membership scams as a specific sub-intent under check_scam_trends.|Prime Membership scams: Membership fee scams claim that a membership fee is owed, or that there's an issue with your membership.|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_account_suspension_scams' into super-intent 'check_scam_trends'|Merge account suspension scams as a specific sub-intent under check_scam_trends.|Account suspension/deletion scams claim your account will be suspended or deleted unless you take specific action.|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_recall_refund_scams' into super-intent 'check_scam_trends'|Merge recall/refund scams as a specific sub-intent under check_scam_trends.|Fake recall or refund scams involve fraudulent messages claiming your recent purchase has safety issues and needs immediate action.|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|MERGE|Merge candidate 'identify_recruitment_scams' into super-intent 'check_scam_trends'|Merge recruitment scams as a specific sub-intent under check_scam_trends.|Recruitment scams offer fictitious job opportunities, and usually come through unofficial channels, websites, emails, and text messages.|APPROVED|
+
+### FINAL_INTENT_TABLE
+
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_order_confirmation_scams|Identify unauthorized purchase or order confirmation scams.|Order confirmation scams involve unexpected communications that often refer to an unauthorized purchase. Scammers ask you to act urgently to confirm or cancel the purchase.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_tech_support_scams|Identify fake tech support websites claiming to provide support for Amazon devices/services.|Tech support scams: Scammers create fake websites claiming to provide tech support for your Amazon devices and services.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_membership_scams|Identify fake Prime membership fee or renewal scams.|Prime Membership scams: Membership fee scams claim that a membership fee is owed, or that there's an issue with your membership.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_account_suspension_scams|Identify fraudulent account suspension or deletion notifications.|Account suspension/deletion scams claim your account will be suspended or deleted unless you take specific action.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_recall_refund_scams|Identify fake safety recall or refund scams.|Fake recall or refund scams involve fraudulent messages claiming your recent purchase has safety issues and needs immediate action.|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=TapjnwRvIRtlgyLPSl|check_scam_trends|identify_recruitment_scams|Identify fictitious Amazon job offers or recruitment scams.|Recruitment scams offer fictitious job opportunities, and usually come through unofficial channels, websites, emails, and text messages.|
