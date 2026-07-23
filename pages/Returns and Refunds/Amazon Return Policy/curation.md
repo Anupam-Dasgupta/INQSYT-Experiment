@@ -1,0 +1,61 @@
+### PAGE_INTENT_CANDIDATES
+
+|url|intent_name|intent_description|evidence|
+|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|Check rules, windows, timelines, fees, and instructions for returning items purchased on Amazon.com.|Most items purchased on Amazon.com can be returned within 30 days of delivery in their original or unused condition.|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_refund_timeline|Check how long it takes to receive a refund depending on the payment/refund method used.|Refund Timelines: Amazon.com Gift Card: 2-3 hours... Credit Card: 3-5 business days... Debit card, Checking account, EBT Card, Cash: Up to 10 business days...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_return_fees|Check return shipping, late, damage, or restocking fees.|Return Shipping Fee: Varies... Late fee: 20% of item price... Damage fee: Up to 50%... Restocking Fee: 100% of item price for opened/used software...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_non_returnable_items|Identify which items or categories cannot be returned to Amazon.|Items That You Can't Return: Perishables, Products posing health/safety risks, Customized products, redeemable products, certain digital products...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|return_gift|Learn return policies and instructions for returning an item received as a gift.|Gifts: You can return items marked as a gift when purchased. Use the Returns Center...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|return_global_store_item|Learn return policies and procedures for Amazon Global Store purchases.|Global Store Returns: Most Amazon Global Store items can be returned within 30 days of receipt...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|return_to_third_party_seller|Learn return policies and procedures for items purchased from third-party sellers on Amazon.|Third-Party Seller Returns: Returns for items purchased from a seller on Amazon.com are sent to the seller...|
+
+### PAGE_INTENT_CHANGE_PROPOSALS
+
+|url|change_type|change_instruction|change_reason|change_evidence|is_approved|
+|-|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|ADD|Add intent 'check_amazon_return_policy'|Add a primary super-intent to check general rules and guidelines for returning items.|Most items purchased on Amazon.com can be returned within 30 days of delivery in their original or unused condition.|No|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'check_refund_timeline' into super-intent 'check_amazon_return_policy'|Merge refund timelines as a specific sub-intent under check_amazon_return_policy.|Refund Timelines: Amazon.com Gift Card: 2-3 hours... Credit Card: 3-5 business days... Debit card, Checking account, EBT Card, Cash: Up to 10 business days...|No|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'check_return_fees' into super-intent 'check_amazon_return_policy'|Merge return fees as a specific sub-intent under check_amazon_return_policy.|Return Shipping Fee: Varies... Late fee: 20% of item price... Damage fee: Up to 50%... Restocking Fee: 100% of item price for opened/used software...|No|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'check_non_returnable_items' into super-intent 'check_amazon_return_policy'|Merge non-returnable items as a specific sub-intent under check_amazon_return_policy.|Items That You Can't Return: Perishables, Products posing health/safety risks, Customized products, redeemable products, certain digital products...|No|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'return_gift' into super-intent 'check_amazon_return_policy'|Merge gift returns as a specific sub-intent under check_amazon_return_policy.|Gifts: You can return items marked as a gift when purchased. Use the Returns Center...|No|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'return_global_store_item' into super-intent 'check_amazon_return_policy'|Merge global store returns as a specific sub-intent under check_amazon_return_policy.|Global Store Returns: Most Amazon Global Store items can be returned within 30 days of receipt...|No|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'return_to_third_party_seller' into super-intent 'check_amazon_return_policy'|Merge third-party seller returns as a specific sub-intent under check_amazon_return_policy.|Third-Party Seller Returns: Returns for items purchased from a seller on Amazon.com are sent to the seller...|No|
+
+### REVIEW_VALIDATION_CHECKS
+
+|check_type|check_name|check_instruction|is_approved|
+|-|-|-|-|
+|check_format|check_output_formats|Verify that PAGE_INTENT_CANDIDATES and PAGE_INTENT_CHANGE_PROPOSALS conform to their expected schemas.|Yes|
+|check_evidence|check_intent_grounding|Verify that every candidate intent and every proposed change is supported by evidence from the source page.|Yes|
+|check_reasoning|check_change_proposal_reasons|Verify that every proposed MERGE, SPLIT, RENAME, ADD, or DELETE is reasonable and clearly justified.|Yes|
+|check_coverage|check_intent_coverage|Verify that no obvious customer goal or refinement proposal directly supported by the page has been omitted.|Yes|
+
+### USER_APPROVAL_TABLE
+
+|url|change_type|change_instruction|change_reason|change_evidence|human_approval|
+|-|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|ADD|Add intent 'check_amazon_return_policy'|Add a primary super-intent to check general rules and guidelines for returning items.|Most items purchased on Amazon.com can be returned within 30 days of delivery in their original or unused condition.|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'check_refund_timeline' into super-intent 'check_amazon_return_policy'|Merge refund timelines as a specific sub-intent.|Refund Timelines: Amazon.com Gift Card: 2-3 hours... Credit Card: 3-5 business days... Debit card, Checking account, EBT Card, Cash: Up to 10 business days...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'check_return_fees' into super-intent 'check_amazon_return_policy'|Merge return fees as a specific sub-intent.|Return Shipping Fee: Varies... Late fee: 20% of item price... Damage fee: Up to 50%... Restocking Fee: 100% of item price for opened/used software...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'check_non_returnable_items' into super-intent 'check_amazon_return_policy'|Merge non-returnable items as a specific sub-intent.|Items That You Can't Return: Perishables, Products posing health/safety risks, Customized products, redeemable products, certain digital products...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'return_gift' into super-intent 'check_amazon_return_policy'|Merge gift returns as a specific sub-intent.|Gifts: You can return items marked as a gift when purchased. Use the Returns Center...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'return_global_store_item' into super-intent 'check_amazon_return_policy'|Merge global store returns as a specific sub-intent.|Global Store Returns: Most Amazon Global Store items can be returned within 30 days of receipt...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'return_to_third_party_seller' into super-intent 'check_amazon_return_policy'|Merge third-party seller returns as a specific sub-intent.|Third-Party Seller Returns: Returns for items purchased from a seller on Amazon.com are sent to the seller...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'check_return_window' into super-intent 'check_amazon_return_policy'|Merge return windows check as a specific sub-intent.|Most items purchased on Amazon.com can be returned within 30 days of delivery...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'send_your_return' into super-intent 'check_amazon_return_policy'|Merge sending returns/how to return as a specific sub-intent.|Most items have at least one free return option. You can return most items at no cost...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|MERGE|Merge candidate 'special_item_returns' into super-intent 'check_amazon_return_policy'|Merge returns for special item categories (pharmacy, business, luxury, heavy/bulky) as a sub-intent.|Specific category guidelines: Pharmacy, Amazon Business, Luxury Stores, Heavy and bulky items...|APPROVED|
+
+### FINAL_INTENT_TABLE
+
+|url|intent_name|sub-intent|intent_description|evidence|
+|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|check_refund_timeline|Check how long it takes to receive a refund depending on the payment/refund method used.|Refund Timelines: Amazon.com Gift Card: 2-3 hours... Credit Card: 3-5 business days... Debit card, Checking account, EBT Card, Cash: Up to 10 business days...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|check_return_fees|Check return shipping, late, damage, or restocking fees.|Return Shipping Fee: Varies... Late fee: 20% of item price... Damage fee: Up to 50%... Restocking Fee: 100% of item price for opened/used software...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|check_non_returnable_items|Identify which items or categories cannot be returned to Amazon.|Items That You Can't Return: Perishables, Products posing health/safety risks, Customized products, redeemable products, certain digital products...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|return_gift|Learn return policies and instructions for returning an item received as a gift.|Gifts: You can return items marked as a gift when purchased. Use the Returns Center...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|return_global_store_item|Learn return policies and procedures for Amazon Global Store purchases.|Global Store Returns: Most Amazon Global Store items can be returned within 30 days of receipt...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|return_to_third_party_seller|Learn return policies and procedures for items purchased from third-party sellers on Amazon.|Third-Party Seller Returns: Returns for items purchased from a seller on Amazon.com are sent to the seller...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|check_return_window|Check return windows (e.g. 30 days) and holiday return extensions.|Most items purchased on Amazon.com can be returned within 30 days of delivery...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|send_your_return|Learn how to submit and drop off returns at designated return locations.|Most items have at least one free return option. You can return most items at no cost...|
+|https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7|check_amazon_return_policy|special_item_returns|Learn return policies and guidelines for special product categories like pharmacy, business, luxury store, or heavy/bulky items.|Specific category guidelines: Pharmacy, Amazon Business, Luxury Stores, Heavy and bulky items...|
