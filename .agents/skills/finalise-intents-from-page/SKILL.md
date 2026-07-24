@@ -23,7 +23,7 @@ Generate the final approved taxonomy while preserving the complete audit trail a
 
 Read:
 
-- specification/step1-schema.md
+- specification/intent-taxonomy-context.md
 
 ---
 
