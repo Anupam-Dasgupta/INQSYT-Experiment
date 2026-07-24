@@ -13,3 +13,19 @@
 |-|-|-|-|-|-|
 |https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GSWAYSNV7RBSTND9|RENAME|Rename candidate intent `change_order_information` to `change_order_details`.|To avoid naming conflict with the proposed super-intent `change_order_information` while representing standard order updates.|To change your order information: 1. Go to Your Orders...|No|
 |https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GSWAYSNV7RBSTND9|MERGE|Merge candidate intents `change_order_details` (renamed), `change_order_on_mobile`, `update_third_party_order_address`, and `add_items_to_fresh_delivery` under a new super-intent `change_order_information`.|These candidate intents represent specific sub-procedures, platform variations, or service-specific instructions for changing orders, and are best grouped under a single hierarchical super-intent.|Go to Your Orders ... If you are on a mobile device, you can make changes ... To update the shipping address of an order from a third-party seller ... To add items to an upcoming Amazon Fresh delivery ...|No|
+
+#### USER_APPROVAL_TABLE
+
+|url|change_type|change_instruction|change_reason|change_evidence|human_approval|
+|-|-|-|-|-|-|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GSWAYSNV7RBSTND9|RENAME|Rename candidate intent `change_order_information` to `change_order_details`.|To avoid naming conflict with the proposed super-intent `change_order_information` while representing standard order updates.|To change your order information: 1. Go to Your Orders...|APPROVED|
+|https://www.amazon.com/gp/help/customer/display.html?ref_=hp_left_v4_sib&nodeId=GSWAYSNV7RBSTND9|MERGE|Merge candidate intents `change_order_details` (renamed), `change_order_on_mobile`, `update_third_party_order_address`, and `add_items_to_fresh_delivery` under a new super-intent `change_order_information`.|These candidate intents represent specific sub-procedures, platform variations, or service-specific instructions for changing orders, and are best grouped under a single hierarchical super-intent.|Go to Your Orders ... If you are on a mobile device, you can make changes ... To update the shipping address of an order from a third-party seller ... To add items to an upcoming Amazon Fresh delivery ...|APPROVED|
+
+#### REVIEW_VALIDATION_CHECKS
+
+|check_type|check_name|check_instruction|is_approved|
+|-|-|-|-|
+|check_format|check_output_formats|Verify that PAGE_INTENT_CANDIDATES and PAGE_INTENT_CHANGE_PROPOSALS conform to their expected schemas.|Yes|
+|check_evidence|check_intent_grounding|Verify that every candidate intent and every proposed change is supported by evidence from the source page.|Yes|
+|check_reasoning|check_change_proposal_reasons|Verify that every proposed MERGE, SPLIT, RENAME, ADD, or DELETE is reasonable and clearly justified.|Yes|
+|check_coverage|check_intent_coverage|Verify that no obvious customer goal or refinement proposal directly supported by the page has been omitted.|Yes|
